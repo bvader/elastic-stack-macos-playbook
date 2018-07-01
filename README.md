@@ -1,4 +1,4 @@
-# Elastic Stack Ansible Playbook
+# Elastic Stack Ansible Playbook for MacOS
  
 This playbook is for setting up version 6.x of the Elastic Stack on a local MacOS environment   
 
