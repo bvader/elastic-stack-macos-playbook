@@ -1,0 +1,17 @@
+---
+#
+# Installing Logstash
+#
+
+  - name: Get Logstash {{ Logstash_url }}
+    get_url:
+      url: "{{ Logstash_url }}/logstash-{{ version }}.tar.gz"
+      dest: "{{ install_dir }}"
+
+  - name: "Extract Logstash"
+    command: "tar -xvf {{ install_dir }}/logstash-{{ version }}.tar.gz -C {{ install_dir }}"
+
+  - name: Cleanup Logstash
+    file:
+      path: "{{ install_dir }}/logstash-{{ version}}.tar.gz"
+      state: absent

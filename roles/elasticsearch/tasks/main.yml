@@ -1,0 +1,17 @@
+---
+#
+# Installing
+#
+
+  - name: "Get Elasticsearch {{ elasticsearch_url }}/{{ product_name }}-{{ version }}{{ target_os }}.tar.gz"
+    get_url:
+      url: "{{ elasticsearch_url }}/{{ product_name }}-{{ version }}.tar.gz"
+      dest: "{{ install_dir }}"
+
+  - name: "Extract Elasticsearch"
+    command: "tar -xvf {{ install_dir }}/{{ product_name }}-{{ version }}.tar.gz -C {{ install_dir }}"
+
+  - name: Cleanup Elasticsearch
+    file:
+      path: "{{ install_dir }}/{{ product_name }}-{{ version}}.tar.gz"
+      state: absent

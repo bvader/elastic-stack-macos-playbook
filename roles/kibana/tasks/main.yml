@@ -1,0 +1,17 @@
+---
+#
+# Installing Kibana
+#
+
+  - name: Get Kibana {{ kibana_url }}
+    get_url:
+      url: "{{ Kibana_url }}/kibana-{{ version }}-darwin-x86_64.tar.gz"
+      dest: "{{ install_dir }}"
+
+  - name: "Extract Kibana"
+    command: "tar -xvf {{ install_dir }}/kibana-{{ version }}-{{ target_os }}.tar.gz -C {{ install_dir }}"
+
+  - name: Cleanup Kibana
+    file:
+      path: "{{ install_dir }}/kibana-{{ version}}-darwin-x86_64.tar.gz"
+      state: absent

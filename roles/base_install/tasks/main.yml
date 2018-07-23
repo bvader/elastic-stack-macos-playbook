@@ -1,0 +1,40 @@
+---
+#
+# Installing
+#
+
+  - set_fact:
+      product_url: "{{ repo_base_url }}/{{ product }}"
+    when: product_family == "elk"
+
+  - set_fact:
+      product_url: "{{ repo_base_url }}/{{ product_family }}/{{ product }}"
+    when: product_family == "beats"
+
+  - set_fact:
+      suffix_os: ""
+      install_dir: "{{ base_install_dir }}/{{ version }}"
+
+  - set_fact:
+      suffix_os: "-{{ target_os }}"
+    when: target_os != none
+
+  - name: Create install dir {{ install_dir }}
+    file:
+      path: "{{ install_dir }}"
+      state: directory
+
+  - name: "Get {{ product }} {{ product_url }}/{{ product }}-{{ version }}{{ suffix_os}}.tar.gz"
+    get_url:
+      url: "{{ product_url }}/{{ product }}-{{ version }}{{ suffix_os}}.tar.gz"
+      dest: "{{ install_dir }}"
+
+  - name: "Extract {{ product }}-{{ version }}{{ suffix_os }}.tar.gz"
+    command: "tar -xvf {{ install_dir }}/{{ product }}-{{ version }}{{ suffix_os }}.tar.gz -C {{ install_dir }}"
+    args:
+      warn: no
+
+  - name: "Cleanup { product }}-{{ version }}{{ suffix_os }}.tar.gz"
+    file:
+      path: "{{ install_dir }}/{{ product }}-{{ version}}{{ suffix_os }}.tar.gz"
+      state: absent
