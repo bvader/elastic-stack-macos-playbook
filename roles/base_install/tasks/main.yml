@@ -34,7 +34,7 @@
     args:
       warn: no
 
-  - name: "Cleanup { product }}-{{ version }}{{ suffix_os }}.tar.gz"
+  - name: "Cleanup {{ product }}-{{ version }}{{ suffix_os }}.tar.gz"
     file:
       path: "{{ install_dir }}/{{ product }}-{{ version}}{{ suffix_os }}.tar.gz"
       state: absent

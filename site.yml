@@ -6,17 +6,16 @@
   hosts: localhost
 
   vars:
-    version: 6.3.1
+    version: 6.5.1
     repo_base_url: https://artifacts.elastic.co/downloads
     base_install_dir: /Users/sbrown/workspace/elastic-install
 
   roles:
-   - { role: base_install, product: elasticsearch, product_family: elk,   target_os: }
-   - { role: base_install, product: logstash,      product_family: elk,   target_os: }
-   - { role: base_install, product: kibana,        product_family: elk,   target_os: darwin-x86_64 }
-   - { role: base_install, product: metricbeat,    product_family: beats, target_os: darwin-x86_64 }
-   - { role: base_install, product: filebeat,      product_family: beats, target_os: darwin-x86_64 }
-   - { role: base_install, product: packetbeat,    product_family: beats, target_os: darwin-x86_64 }
-   - { role: base_install, product: auditbeat,     product_family: beats, target_os: darwin-x86_64 }
-   - { role: base_install, product: heartbeat,     product_family: beats, target_os: darwin-x86_64 }
-   - { role: base_install, product: auditbeat,     product_family: beats, target_os: darwin-x86_64 }
+    - { role: base_install, product: elasticsearch, product_family: elk,   target_os: }
+    - { role: base_install, product: logstash,      product_family: elk,   target_os: }
+    - { role: base_install, product: kibana,        product_family: elk,   target_os: darwin-x86_64 }
+    - { role: base_install, product: apm-server,    product_family: elk,   target_os: darwin-x86_64 }
+    - { role: base_install, product: metricbeat,    product_family: beats, target_os: darwin-x86_64 }
+    - { role: base_install, product: filebeat,      product_family: beats, target_os: darwin-x86_64 }
+#   - { role: base_install, product: packetbeat,    product_family: beats, target_os: darwin-x86_64 }
+#  - { role: base_install, product: auditbeat,     product_family: beats, target_os: darwin-x86_64 }
