@@ -2,7 +2,7 @@
 #
 # Playbook to install the ELK stack + Beats on MacOS
 #
-- name: Insall Elastic Stack components on MacOS
+- name: Install Elastic Stack components on MacOS
   hosts: localhost
 
   vars:
