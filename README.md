@@ -12,5 +12,5 @@ This playbook is for setting up version 6.x of the Elastic Stack on a local MacO
  ## Instructions
  - Run the playbook with the following command
 
- `TAG=6.6.0 ansible-playbook site.yml -i hosts`
+ `ansible-playbook site.yml -i hosts --extra-vars "version=6.6.0"`
  
