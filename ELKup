@@ -6,7 +6,7 @@ usage(){
 }
 
 VERSION=${TAG}
-HOME_INSTALL="/Users/sbrown/workspace/elastic-install"
+HOME_INSTALL=${EX_BASE_INSTALL}
 ES_HOME="${HOME_INSTALL}/${VERSION}/elasticsearch-${VERSION}"
 KIB_HOME="${HOME_INSTALL}/${VERSION}/kibana-${VERSION}-darwin-x86_64"
 APM_HOME="${HOME_INSTALL}/${VERSION}/apm-server-${VERSION}-darwin-x86_64"
