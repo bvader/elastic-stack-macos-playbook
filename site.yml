@@ -6,9 +6,9 @@
   hosts: localhost
 
   vars:
-    version: 6.5.1
+    version: "{{ version }}"
     repo_base_url: https://artifacts.elastic.co/downloads
-    base_install_dir: /Users/bvader/workspace/elastic-install
+    base_install_dir: /Users/sbrown/workspace/elastic-install
 
   roles:
     - { role: base_install, product: elasticsearch, product_family: elk,   target_os: }

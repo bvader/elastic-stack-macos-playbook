@@ -1,0 +1,87 @@
+#!/bin/bash
+
+usage(){
+	echo "Usage: $0 [start | stop]"
+	exit 1
+}
+
+VERSION=${TAG}
+HOME_INSTALL="/Users/sbrown/workspace/elastic-install"
+ES_HOME="${HOME_INSTALL}/${VERSION}/elasticsearch-${VERSION}"
+KIB_HOME="${HOME_INSTALL}/${VERSION}/kibana-${VERSION}-darwin-x86_64"
+APM_HOME="${HOME_INSTALL}/${VERSION}/apm-server-${VERSION}-darwin-x86_64"
+LS_HOME="${HOME_INSTALL}/${VERSION}/logstash-${VERSION}"
+
+# ES_LOGS="/Users/sbrown/workspace/elastic-install/Common/ES/Logs"
+# ES_CONF="/Users/sbrown/workspace/elastic-install/Common/ES/Config"
+# KIB_LOGS="/Users/sbrown/workspace/elastic-install/Common/KIB/Logs"
+# KIB_CONF="/Users/sbrown/workspace/elastic-install/Common/KIB/Config"
+
+if [ $# -ne 1 ]; then
+  usage
+fi
+
+if [ $1  == 'start' ]; then
+
+  cd $ES_HOME
+  if [ ! -f ./pid ] ; then
+    echo "Starting Elasticsearch ..."
+    ES_JAVA_OPTS="-Xms3g -Xmx3g" ./bin/elasticsearch -d -p pid
+  else
+    PID=`cat pid`
+    echo "Elasticsearch already running pid=${PID}"
+  fi
+
+  cd $KIB_HOME
+  if [ ! -f ./pid ] ; then
+    echo "Starting Kibana ..."
+    mkdir -p logs
+    ./bin/kibana --logging.dest=./logs/kibana.log & echo $! > pid
+  else
+    PID=`cat pid`
+    echo "Kibana already running pid=${PID}"
+  fi
+
+	cd $APM_HOME
+  if [ ! -f ./pid ] ; then
+    echo "Starting APM Server ..."
+    ./apm-server -E "apm-server.rum.enabled=true" & echo $! > pid
+		  else
+    PID=`cat pid`
+    echo "APM server already running pid=${PID}"
+  fi
+
+elif [ $1  == 'stop' ]; then
+
+  cd $ES_HOME
+  if [ -f ./pid ] ; then
+    echo "Stopping Elasticsearch ..."
+    kill `cat pid`
+    # NOTE elasticearch cleans up its own pid file
+  else
+    echo "Elasicsearch not running ..."
+  fi
+
+  cd $KIB_HOME
+  if [ -f ./pid ] ; then
+    echo "Stopping Kibana ... "
+    kill `cat pid`
+    rm pid
+  else
+    echo "Kibana not running ..."
+  fi
+
+	cd $APM_HOME
+  if [ -f ./pid ] ; then
+    echo "Stopping APM Server ... "
+    kill `cat pid`
+    rm pid
+  else
+    echo "APM Server not running ..."
+  fi
+
+else
+
+  usage
+
+fi
