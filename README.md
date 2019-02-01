@@ -15,7 +15,7 @@ This playbook is for setting up version 6.x of the Elastic Stack on a local MacO
 
  `export ES_BASE_INSTALL=/Users/sbrown/workspace/elastic-install`
 
- - Run the playbook with the following command
+ - Run the playbook with the following command, this installs version 6.6.0
  
  `ansible-playbook site.yml -i hosts --extra-vars "version=6.6.0"`
  
