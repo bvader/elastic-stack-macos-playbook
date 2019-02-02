@@ -12,9 +12,9 @@ This playbook is for setting up version 6.x of the Elastic Stack on a local MacO
  - You can change the Elasticsearch JVM size by editing ES_JVM_SIZE in ELKup
 
 ## Instructions
-Export or set ES_BASE_HOME to the base directory where you want to install
+Export or set ES_INSTALL_HOME to the base directory where you want to install
 
- `export ES_BASE_HOME=/Users/sbrown/workspace/elastic-install`
+ `export ES_INSTALL_HOME=/Users/sbrown/workspace/elastic-install`
 
 Run the playbook with the following command, this installs version 6.6.0 all components
 
