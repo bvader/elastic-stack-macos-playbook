@@ -6,16 +6,37 @@
   hosts: localhost
 
   vars:
-    version: "{{ version }}"
+    version: "{{ tag }}"
     repo_base_url: https://artifacts.elastic.co/downloads
-    base_install_dir: '{{ lookup("env", "ES_BASE_INSTALL") }}'
+    base_install_dir: '{{ lookup("env", "ES_BASE_HOME") }}'
+    run_option: "{{ run_option }}"
 
-  roles:
-    - { role: base_install, product: elasticsearch, product_family: elk,   target_os: }
-    - { role: base_install, product: logstash,      product_family: elk,   target_os: }
-    - { role: base_install, product: kibana,        product_family: elk,   target_os: darwin-x86_64 }
-    - { role: base_install, product: apm-server,    product_family: elk,   target_os: darwin-x86_64 }
-    - { role: base_install, product: metricbeat,    product_family: beats, target_os: darwin-x86_64 }
-    - { role: base_install, product: filebeat,      product_family: beats, target_os: darwin-x86_64 }
-    - { role: base_install, product: packetbeat,    product_family: beats, target_os: darwin-x86_64 }
-    - { role: base_install, product: auditbeat,     product_family: beats, target_os: darwin-x86_64 }
+
+  tasks:
+    # Install
+    - { include_role: { name: install }, vars: { product: elasticsearch, product_family: elk,   target_os: },                 when: run_option == "install" }
+    - { include_role: { name: install }, vars: { product: logstash,      product_family: elk,   target_os: },                 when: run_option == "install" }
+    - { include_role: { name: install }, vars: { product: kibana,        product_family: elk,   target_os:  darwin-x86_64 },  when: run_option == "install" }
+    - { include_role: { name: install }, vars: { product: apm-server,    product_family: elk,   target_os:  darwin-x86_64 },  when: run_option == "install" }
+    - { include_role: { name: install }, vars: { product: metricbeat,    product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "install" }
+    - { include_role: { name: install }, vars: { product: filebeat,      product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "install" }
+    - { include_role: { name: install }, vars: { product: packetbeat,    product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "install" }
+
+    # Remove
+    - { include_role: { name: remove },  vars: { product: elasticsearch, product_family: elk,   target_os: },                 when: run_option == "remove" }
+    - { include_role: { name: remove },  vars: { product: logstash,      product_family: elk,   target_os: },                 when: run_option == "remove" }
+    - { include_role: { name: remove },  vars: { product: kibana,        product_family: elk,   target_os:  darwin-x86_64 },  when: run_option == "remove" }
+    - { include_role: { name: remove },  vars: { product: apm-server,    product_family: elk,   target_os:  darwin-x86_64 },  when: run_option == "remove" }
+    - { include_role: { name: remove },  vars: { product: metricbeat,    product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove" }
+    - { include_role: { name: remove },  vars: { product: filebeat,      product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove" }
+    - { include_role: { name: remove },  vars: { product: packetbeat,    product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove" }
+
+
+  # tasks:
+  #   - include_role:
+  #         name: base_install
+  #     vars:
+  #       product: elasticsearch
+  #       product_family: elk
+  #       target_os:
+  #     when: run_option == "install"

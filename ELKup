@@ -6,7 +6,9 @@ usage(){
 }
 
 VERSION=${TAG}
-HOME_INSTALL=${EX_BASE_INSTALL}
+ES_JVM_SIZE="-Xms2g -Xmx2g"
+ES_OPTIONS=""
+HOME_INSTALL=${ES_BASE_HOME}
 ES_HOME="${HOME_INSTALL}/${VERSION}/elasticsearch-${VERSION}"
 KIB_HOME="${HOME_INSTALL}/${VERSION}/kibana-${VERSION}-darwin-x86_64"
 APM_HOME="${HOME_INSTALL}/${VERSION}/apm-server-${VERSION}-darwin-x86_64"
@@ -26,7 +28,7 @@ if [ $1  == 'start' ]; then
   cd $ES_HOME
   if [ ! -f ./pid ] ; then
     echo "Starting Elasticsearch ..."
-    ES_JAVA_OPTS="-Xms3g -Xmx3g" ./bin/elasticsearch -d -p pid
+    ES_JAVA_OPTS="${ES_JVM_SIZE}" ./bin/elasticsearch -d -p pid ${ES_OPTIONS}
   else
     PID=`cat pid`
     echo "Elasticsearch already running pid=${PID}"
