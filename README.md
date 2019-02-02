@@ -16,11 +16,11 @@ Export or set ES_INSTALL_HOME to the base directory where you want to install
 
  `export ES_INSTALL_HOME=/Users/sbrown/workspace/elastic-install`
 
-Run the playbook with the following command, this installs version 6.6.0 all components
+To install all the components, run the playbook with the following command, this installs version 6.6.0 of all components
 
  `ansible-playbook site.yml -i hosts --extra-vars "tag=6.6.0 run_option=install-all"`
 
-To install a single component, rthe playbook with the following command, this installs Elasticearch version 6.6.0
+To install a single component, run the playbook with the following command, this installs Elasticearch version 6.6.0
 
  `ansible-playbook site.yml -i hosts --extra-vars "tag=6.6.0 run_option=install-elasticearch"`
 
