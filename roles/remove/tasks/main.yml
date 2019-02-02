@@ -1,0 +1,25 @@
+---
+#
+# Installing
+#
+
+  - set_fact:
+      product_url: "{{ repo_base_url }}/{{ product }}"
+    when: product_family == "elk"
+
+  - set_fact:
+      product_url: "{{ repo_base_url }}/{{ product_family }}/{{ product }}"
+    when: product_family == "beats"
+
+  - set_fact:
+      suffix_os: ""
+      install_dir: "{{ base_install_dir }}/{{ version }}"
+
+  - set_fact:
+      suffix_os: "-{{ target_os }}"
+    when: target_os != none
+
+  - name: "Cleanup {{ product }}-{{ version }}{{ suffix_os }}"
+    file:
+      path: "{{ install_dir }}/{{ product }}-{{ version}}{{ suffix_os }}"
+      state: absent
