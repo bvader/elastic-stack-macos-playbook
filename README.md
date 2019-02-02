@@ -7,7 +7,7 @@ This playbook is for setting up version 6.x of the Elastic Stack on a local MacO
  - **Prequisite:** You will need Ansible installed you can install with `brew install ansible`
  - This was tested on MacOS Mojave 10.14.1 (18B75)
  - The playbook is currently configured to install the full Elastic Stack including all the Beats
- - You can comment out what you do not want to install
+ - You can install all components or individually (or comment out what you don't want to install in the `site.yml`)
  - Currently ELKUp starts Elasticsearch with a 2gb JVM, Kibana and APM Server with RUM enabled
  - You can change the Elasticsearch JVM size by editing ES_JVM_SIZE in ELKup
 
