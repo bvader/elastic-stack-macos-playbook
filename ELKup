@@ -73,7 +73,7 @@ elif [ $1  == 'stop' ]; then
     echo "Kibana not running ..."
   fi
 
-	cd $APM_HOME
+  cd $APM_HOME
   if [ -f ./pid ] ; then
     echo "Stopping APM Server ... "
     kill `cat pid`
