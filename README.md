@@ -1,6 +1,7 @@
 # Elastic Stack Ansible Playbook for MacOS
 
-This playbook is for setting up version 6.x of the Elastic Stack on a local MacOS environment   
+This playbook is for setting up version 7.x of the Elastic Stack on a local MacOS environment
+You can still use this for 6.x but you will need to modify the `site.yml` and set  the `target_os:  ` for some of the products that were not divided out by OS from a downloads path perspective. 
 
 ## Notes and requirements
 
