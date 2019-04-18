@@ -1,12 +1,12 @@
 # Elastic Stack Ansible Playbook for MacOS
 
 This playbook is for setting up version 7.x of the Elastic Stack on a local MacOS environment
-You can still use this for 6.x but you will need to modify the `site.yml` and set  the `target_os:  ` for some of the products that were not divided out by OS from a downloads path perspective. 
+You can still use this for 6.x but you will need to modify the `site.yml` and set  the `target_os:  ` for some of the products that were not divided out by OS from a downloads path perspective.
 
 ## Notes and requirements
 
  - **Prequisite:** You will need Ansible installed you can install with `brew install ansible`
- - This was tested on MacOS Mojave 10.14.1 (18B75)
+ - This was tested on MacOS Mojave 10.14.x
  - The playbook is currently configured to install the full Elastic Stack including all the Beats
  - You can install all components or individually (or comment out what you don't want to install in the `site.yml`)
  - Currently ELKUp starts Elasticsearch with a 2gb JVM, Kibana and APM Server with RUM enabled
