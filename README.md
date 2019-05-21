@@ -17,31 +17,31 @@ Export or set ES_INSTALL_HOME to the base directory where you want to install
 
  `export ES_INSTALL_HOME=/Users/sbrown/workspace/elastic-install`
 
-To install all the components, run the playbook with the following command, this installs version 7.0.1 of all components
+To install all the components, run the playbook with the following command, this installs version 7.1.0 of all components
 
- `ansible-playbook site.yml -i hosts --extra-vars "tag=7.0.1 run_option=install-all"`
+ `ansible-playbook site.yml -i hosts --extra-vars "tag=7.1.0 run_option=install-all"`
 
-To install a single component, run the playbook with the following command, this installs Elasticearch version 7.0.1
+To install a single component, run the playbook with the following command, this installs Elasticearch version 7.1.0
 
- `ansible-playbook site.yml -i hosts --extra-vars "tag=7.0.1 run_option=install-elasticearch"`
-
-Run ELKup start to start the stack
-
-  `TAG=7.0.1 ./ELKup start`
+ `ansible-playbook site.yml -i hosts --extra-vars "tag=7.1.0 run_option=install-elasticearch"`
 
 Run ELKup start to start the stack
 
-  `TAG=7.0.1 ./ELKup stop`
+  `TAG=7.1.0 ./ELKup start`
 
-Run the playbook with the following command, this removes version 7.0.1
+Run ELKup start to start the stack
+
+  `TAG=7.1.0 ./ELKup stop`
+
+Run the playbook with the following command, this removes version 7.1.0
 
 **CAUTION** This forceably removes the **ENTIRE** installation including data directories and config files
 
-`ansible-playbook site.yml -i hosts --extra-vars "tag=7.0.1 run_option=remove-all"`
+`ansible-playbook site.yml -i hosts --extra-vars "tag=7.1.0 run_option=remove-all"`
 
-To remove a single component, run the playbook with the following command, this removes Elasticearch version 7.0.1.
+To remove a single component, run the playbook with the following command, this removes Elasticearch version 7.1.0.
 
-`ansible-playbook site.yml -i hosts --extra-vars "tag=7.0.1 run_option=install-elasticearch"`
+`ansible-playbook site.yml -i hosts --extra-vars "tag=7.1.0 run_option=install-elasticearch"`
 
 Valid `run_options`
 
