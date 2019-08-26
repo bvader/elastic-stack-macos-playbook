@@ -1,0 +1,5 @@
+layout pipenv
+
+export PATH=$PWD:$PATH
+export ES_INSTALL_HOME=$HOME/workspace/elastic-install
+export TAG=7.3.0
