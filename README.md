@@ -11,11 +11,18 @@ You can still use this for 6.x but you will need to modify the `site.yml` and se
  - You can install all components or individually (or comment out what you don't want to install in the `site.yml`)
  - Currently ELKUp starts Elasticsearch with a 2gb JVM, Kibana and APM Server with RUM enabled
  - You can change the Elasticsearch JVM size by editing ES_JVM_SIZE in ELKup
+ - Setup [Direnv](https://direnv.net/#basic-installation)
+ - Have pip3 installed 
+   ```sh 
+    $ brew install python3
+   ``` 
 
 ## Instructions
-Export or set ES_INSTALL_HOME to the base directory where you want to install
-
- `export ES_INSTALL_HOME=/Users/sbrown/workspace/elastic-install`
+Run the setup script: 
+```sh
+   ./setup.sh 
+```
+> This assumes that you want ES_INSTALL_HOME to be in `$HOME/workspace/elastic-install`
 
 To install all the components, run the playbook with the following command, this installs version 7.3.0 of all components
 
@@ -27,11 +34,11 @@ To install a single component, run the playbook with the following command, this
 
 Run ELKup start to start the stack
 
-  `TAG=7.3.0 ./ELKup start`
+  `ELKup start`
 
 Run ELKup start to start the stack
 
-  `TAG=7.3.0 ./ELKup stop`
+  `ELKup stop`
 
 Run the playbook with the following command, this removes version 7.3.0
 
