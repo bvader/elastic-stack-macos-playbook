@@ -67,7 +67,7 @@ elif [ $1  == 'stop' ]; then
   cd $KIB_HOME
   if [ -f ./pid ] ; then
     echo "Stopping Kibana ... "
-    kill `cat pid`
+    pkill -P `cat pid`
     rm pid
   else
     echo "Kibana not running ..."
