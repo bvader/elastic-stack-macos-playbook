@@ -28,13 +28,14 @@
     get_url:
       url: "{{ product_url }}/{{ product }}-{{ version }}{{ suffix_os}}.tar.gz"
       dest: "{{ install_dir }}"
+      validate_certs: no
 
   - name: "Extract {{ product }}-{{ version }}{{ suffix_os }}.tar.gz"
     command: "tar -xvf {{ install_dir }}/{{ product }}-{{ version }}{{ suffix_os }}.tar.gz -C {{ install_dir }}"
-    args:
-      warn: no
+    # args:
+    #   warn: no
 
-  - name: "Cleanup {{ product }}-{{ version }}{{ suffix_os }}.tar.gz"
-    file:
-      path: "{{ install_dir }}/{{ product }}-{{ version}}{{ suffix_os }}.tar.gz"
-      state: absent
+  # - name: "Cleanup {{ product }}-{{ version }}{{ suffix_os }}.tar.gz"
+  #   file:
+  #     path: "{{ install_dir }}/{{ product }}-{{ version}}{{ suffix_os }}.tar.gz"
+  #     state: absent

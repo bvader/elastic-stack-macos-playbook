@@ -22,9 +22,10 @@
     - { include_role: { name: install }, vars: { product: apm-server,    product_family: elk,   target_os:  darwin-x86_64 },  when: run_option == "install-all" or run_option == "install-apm-server" }
     - { include_role: { name: install }, vars: { product: metricbeat,    product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "install-all" or run_option == "install-metricbeat" }
     - { include_role: { name: install }, vars: { product: filebeat,      product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "install-all" or run_option == "install-filebeat" }
-    - { include_role: { name: install }, vars: { product: packetbeat,    product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "install-all" or run_option == "install-packetbeat" }
-    - { include_role: { name: install }, vars: { product: heartbeat,     product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "install-all" or run_option == "install-heartbeat" }
-    - { include_role: { name: install }, vars: { product: auditbeat,     product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "install-all" or run_option == "install-auditbeat" }
+    # Add these back in if you like
+    # - { include_role: { name: install }, vars: { product: packetbeat,    product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "install-all" or run_option == "install-packetbeat" }
+    # - { include_role: { name: install }, vars: { product: heartbeat,     product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "install-all" or run_option == "install-heartbeat" }
+    # - { include_role: { name: install }, vars: { product: auditbeat,     product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "install-all" or run_option == "install-auditbeat" }
 
     # Remove
     - { include_role: { name: remove },  vars: { product: elasticsearch, product_family: elk,   target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-elasticsearch" }
@@ -32,7 +33,7 @@
     - { include_role: { name: remove },  vars: { product: kibana,        product_family: elk,   target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-kibana" }
     - { include_role: { name: remove },  vars: { product: apm-server,    product_family: elk,   target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-apm-server" }
     - { include_role: { name: remove },  vars: { product: metricbeat,    product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-metricbeat" }
-    - { include_role: { name: remove },  vars: { product: filebeat,      product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-filebeat" }
-    - { include_role: { name: remove },  vars: { product: packetbeat,    product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-packetbeat" }
-    - { include_role: { name: remove },  vars: { product: heartbeat,     product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-heartbeat" }
-    - { include_role: { name: remove },  vars: { product: auditbeat,     product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-auditbeat" }
+    # - { include_role: { name: remove },  vars: { product: filebeat,      product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-filebeat" }
+    # - { include_role: { name: remove },  vars: { product: packetbeat,    product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-packetbeat" }
+    # - { include_role: { name: remove },  vars: { product: heartbeat,     product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-heartbeat" }
+    # - { include_role: { name: remove },  vars: { product: auditbeat,     product_family: beats, target_os:  darwin-x86_64 },  when: run_option == "remove-all" or run_option == "remove-auditbeat" }
